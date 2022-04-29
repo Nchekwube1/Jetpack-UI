@@ -20,13 +20,12 @@ fun HomeScreen(){
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
-                                    .background(colorResource(id = R.color.teal_700))
                                     .wrapContentSize(Alignment.Center)
             ) {
                         Text(
                                     text = "Home Screen",
                                     fontWeight = FontWeight.Bold,
-                                    color = Color.White,
+                                    color = Color.Black,
                                     modifier = Modifier.align(Alignment.CenterHorizontally),
                                     textAlign = TextAlign.Center,
                                     fontSize = 20.sp
@@ -38,13 +37,12 @@ fun MarketScreen(){
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
-                                    .background(colorResource(id = R.color.teal_700))
                                     .wrapContentSize(Alignment.Center)
             ) {
                         Text(
-                                    text = "Home Screen",
+                                    text = "Market Screen",
                                     fontWeight = FontWeight.Bold,
-                                    color = Color.White,
+                                    color = Color.Black,
                                     modifier = Modifier.align(Alignment.CenterHorizontally),
                                     textAlign = TextAlign.Center,
                                     fontSize = 20.sp
@@ -56,13 +54,12 @@ fun WalletScreen(){
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
-                                    .background(colorResource(id = R.color.teal_700))
                                     .wrapContentSize(Alignment.Center)
             ) {
                         Text(
-                                    text = "Home Screen",
+                                    text = "Wallet Screen",
                                     fontWeight = FontWeight.Bold,
-                                    color = Color.White,
+                                    color = Color.Black,
                                     modifier = Modifier.align(Alignment.CenterHorizontally),
                                     textAlign = TextAlign.Center,
                                     fontSize = 20.sp
@@ -75,13 +72,12 @@ fun ProfileScreen(){
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
-                                    .background(colorResource(id = R.color.teal_700))
                                     .wrapContentSize(Alignment.Center)
             ) {
                         Text(
-                                    text = "Home Screen",
+                                    text = "Profile Screen",
                                     fontWeight = FontWeight.Bold,
-                                    color = Color.White,
+                                    color = Color.Black,
                                     modifier = Modifier.align(Alignment.CenterHorizontally),
                                     textAlign = TextAlign.Center,
                                     fontSize = 20.sp
@@ -94,13 +90,12 @@ fun HistoryScreen(){
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
-                                    .background(colorResource(id = R.color.teal_700))
                                     .wrapContentSize(Alignment.Center)
             ) {
                         Text(
-                                    text = "Home Screen",
+                                    text = "History Screen",
                                     fontWeight = FontWeight.Bold,
-                                    color = Color.White,
+                                    color = Color.Black,
                                     modifier = Modifier.align(Alignment.CenterHorizontally),
                                     textAlign = TextAlign.Center,
                                     fontSize = 20.sp
