@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
@@ -24,7 +25,8 @@ import com.example.instaclone.ui.theme.WhiteBg
 fun MainBottomTab(){
             val navController = rememberNavController( )
             Scaffold(bottomBar = {
-                        BottomBar(navController = navController)
+                                    BottomBar(navController = navController)
+
             }) {
 BottomNavGraph(navController = navController)
             }
@@ -43,20 +45,15 @@ fun BottomBar(navController:NavHostController){
             val currentDestination = navBackStackEntry?.destination
 
                         BottomNavigation (
-                                    backgroundColor = WhiteBg,
-                                    modifier = Modifier
-                                                .height(75.dp),
-                                            elevation = 40.dp,
-
                                 ){
-                                    screens.forEach { screen ->
-                                                AddItem(
-                                                            screen,
-                                                            currentDestination = currentDestination,
-                                                            navController = navController
-                                                )
+                                                screens.forEach { screen ->
+                                                            AddItem(
+                                                                        screen,
+                                                                        currentDestination = currentDestination,
+                                                                        navController = navController
+                                                            )
 
-                                    }
+                                                }
                         }
 }
 
@@ -67,9 +64,9 @@ fun RowScope.AddItem(
             navController:NavHostController
 ){
   BottomNavigationItem(
-              modifier = Modifier.align(Alignment.CenterVertically),
               label = {
-                          Text(text = screen.title)
+                          Text(text = screen.title,fontSize = 14.sp,
+                                      )
               },
               icon = {
 //                          Icon( ImageVector = screen.icon ,contentDescription ="Navigation icon for ${screen.title}" )
@@ -84,7 +81,6 @@ fun RowScope.AddItem(
               },
               selectedContentColor= PrimaryGreen,
               unselectedContentColor = Gray,
-
 
   )
 }
