@@ -118,7 +118,7 @@ Card(modifier = Modifier
                                                 modifier = Modifier
                                                             .size(30.dp)
                                                             .clip(CircleShape)
-                                                            .background(color =  MaterialTheme.colors.background)
+                                                            .background(color = MaterialTheme.colors.background)
                                                             .padding(5.dp)
                                                 ,
                                                 tint =  PrimaryGreen,
@@ -153,8 +153,25 @@ Card(modifier = Modifier
                         }
 
             }
+
 }
+
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    modifier = Modifier
+                                                .fillMaxWidth()
+                        ) {
+                                    Text(text = "Watchlist", color = Color.Black)
+                                    TextButton(onClick = { /*TODO*/ }) {
+                                                Text(text = "See All", color = PrimaryGreen)
+                                    }
+                        }
             }
+
+
+
 }
 @Composable
 fun MarketScreen(){
