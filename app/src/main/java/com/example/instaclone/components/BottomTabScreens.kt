@@ -162,6 +162,7 @@ Card(modifier = Modifier
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                     modifier = Modifier
                                                 .fillMaxWidth()
+                                                .padding(horizontal = 10.dp)
                         ) {
                                     Text(text = "Watchlist", color = Color.Black)
                                     TextButton(onClick = { /*TODO*/ }) {
