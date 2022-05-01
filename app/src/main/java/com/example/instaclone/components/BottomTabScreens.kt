@@ -7,9 +7,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.rounded.ArrowRight
+import androidx.compose.material.icons.rounded.ArrowRightAlt
+import androidx.compose.material.icons.rounded.SubdirectoryArrowRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.instaclone.R
+import com.example.instaclone.ui.theme.PrimaryGreen
 
 @Composable
 fun HomeScreen(){
@@ -67,7 +70,6 @@ fun HomeScreen(){
                                       Icon(imageVector = Icons.Outlined.Notifications, contentDescription ="Notifications icon",
                                                   modifier = Modifier
                                                               .size(30.dp)
-//                                                              .padding(14.dp)
                                                   ,
                                                   tint = Color.Black
                                                   )
@@ -75,15 +77,83 @@ fun HomeScreen(){
 
                           }
         }
+                        Spacer(modifier = Modifier.height(20.dp))
 
-                        Column(
-                                    modifier = Modifier
-                                                .fillMaxWidth()
-                                                .height(90.dp)
+Card(modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp),
+//            .background(color = PrimaryGreen),
+            elevation = 4.dp,
+            shape = RoundedCornerShape(10.dp)
 
+) {
+            Column(
+                        modifier = Modifier
+//                                    .fillMaxWidth()
+                                    .background(color = PrimaryGreen)
+                                    .padding(20.dp)
+
+//                                                .height(90.dp)
+
+            ) {
+                        Text(text = "Wallet balance (USD)",
+                                    color = MaterialTheme.colors.background,
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 16.sp
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+
+                        Row(
+                                    verticalAlignment = Alignment.CenterVertically
                         ) {
+                                    Text(text ="$5,680" ,
+                                                color =  MaterialTheme.colors.background,
+                                                textAlign = TextAlign.Start,
+                                                fontSize = 16.sp
+                                    )
+                                    Spacer(modifier = Modifier.width(10.dp))
+
+                                    Icon(imageVector = Icons.Default.SwapHoriz, contentDescription = "Loop icon",
+
+                                                modifier = Modifier
+                                                            .size(30.dp)
+                                                            .clip(CircleShape)
+                                                            .background(color =  MaterialTheme.colors.background)
+                                                            .padding(5.dp)
+                                                ,
+                                                tint =  PrimaryGreen,
+
+                                    )
 
                         }
+                        Spacer(modifier = Modifier.height(15.dp))
+                        Button(onClick = { /*TODO*/ },
+                        shape = RoundedCornerShape(8.dp)
+                                    ) {
+                                    Row(
+                                                verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.padding(vertical = 3.dp)
+                                    ) {
+                                                Text(text = "Add Funds",
+                                                            color = PrimaryGreen,
+                                                            textAlign = TextAlign.Start,
+                                                            fontSize = 16.sp
+                                                )
+                                                Spacer(modifier = Modifier.width(4.dp))
+
+                                                Icon(
+                                                            imageVector = Icons.Rounded.ArrowRightAlt,
+                                                            contentDescription = "Add funds Icon",
+                                                            modifier = Modifier
+                                                                        .size(30.dp),
+                                                            tint = PrimaryGreen
+
+                                                )
+                                    }
+                        }
+
+            }
+}
             }
 }
 @Composable

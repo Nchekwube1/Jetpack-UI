@@ -1,6 +1,7 @@
 package com.example.instaclone.bottomNav
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -26,8 +27,8 @@ fun MainBottomTab(){
             val navController = rememberNavController( )
             Scaffold(bottomBar = {
                                     BottomBar(navController = navController)
-
-            }) {
+            },
+            ) {
 BottomNavGraph(navController = navController)
             }
 }
