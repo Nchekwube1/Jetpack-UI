@@ -1,8 +1,13 @@
 package com.example.instaclone.components
 
+import android.content.Context
+import android.media.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -17,16 +22,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.instaclone.R
+import com.example.instaclone.ui.theme.IconBg
 import com.example.instaclone.ui.theme.PrimaryGreen
+
+val homeItemsList = listOf<homeItems>(
+            homeItems(R.drawable.sofi,"SOFI", "SoFi"),
+            homeItems(R.drawable.oando, "OANDO","Oando Plc."),
+            homeItems(R.drawable.glo, "GLO", "glo plc.")
+)
+
 
 @Composable
 fun HomeScreen(){
+            val configuration = LocalConfiguration.current
+
+            val screenHeight = configuration.screenHeightDp.dp
+            val screenWidth = configuration.screenWidthDp.dp
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
@@ -164,11 +182,44 @@ Card(modifier = Modifier
                                                 .fillMaxWidth()
                                                 .padding(horizontal = 10.dp)
                         ) {
-                                    Text(text = "Watchlist", color = Color.Black)
+                                    Text(text = "Watchlist", color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                )
                                     TextButton(onClick = { /*TODO*/ }) {
                                                 Text(text = "See All", color = PrimaryGreen)
                                     }
                         }
+                        
+            LazyRow(
+
+            ){
+items(homeItemsList){
+            item ->
+            Card(
+                      modifier = Modifier
+                                  .padding(10.dp)
+                                  .width(175.dp)
+                                  .background(color = IconBg)
+                                  .padding(10.dp)
+
+            ){
+                        Column {
+                                    Text(text = item.sName,
+                                    fontWeight = FontWeight.Bold,
+                                                fontSize = 19.sp,
+                                                color = Color.Black
+
+                                                )
+                                    Text(text = item.lName,
+                                                fontWeight = FontWeight.Bold,
+                                                fontSize = 19.sp,
+                                                color = Color.Black
+
+                                    )
+                        }
+            }
+}
+            }
             }
 
 
@@ -244,3 +295,7 @@ fun HistoryScreen(){
                         )
             }
 }
+
+
+
+data class homeItems(val image:Int, val sName:String , val lName:String)
