@@ -2,6 +2,7 @@ package com.example.instaclone.components
 
 import android.content.Context
 import android.media.Image
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.horizontalScroll
@@ -22,8 +23,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -33,14 +36,14 @@ import com.example.instaclone.ui.theme.IconBg
 import com.example.instaclone.ui.theme.PrimaryGreen
 
 val homeItemsList = listOf<homeItems>(
-            homeItems(R.drawable.sofi,"SOFI", "SoFi"),
-            homeItems(R.drawable.oando, "OANDO","Oando Plc."),
+            homeItems(R.drawable.sofi, "SOFI", "SoFi"),
+            homeItems(R.drawable.oando, "OANDO", "Oando Plc."),
             homeItems(R.drawable.glo, "GLO", "glo plc.")
 )
 
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen() {
             val configuration = LocalConfiguration.current
 
             val screenHeight = configuration.screenHeightDp.dp
@@ -52,127 +55,144 @@ fun HomeScreen(){
 
             ) {
                         Spacer(modifier = Modifier.height(10.dp))
-              Row(
-                          verticalAlignment = Alignment.CenterVertically,
-                         horizontalArrangement = Arrangement.SpaceBetween ,
-                          modifier = Modifier
-                                      .fillMaxWidth()
-              ) {
-        Column(modifier = Modifier
-                    .weight(1f)
-                    .padding(horizontal = 10.dp)
-
-        ) {
-                    Text(text = "Hello Francis",
-                                fontWeight = FontWeight.Bold,
-                                color = Color.Black,
-                                textAlign = TextAlign.Start,
-                                fontSize = 20.sp
-                                )
-                    Text(text = "Welcome to jetpack",
-                                color = Color.Black,
-                                textAlign = TextAlign.Start,
-                                fontSize = 16.sp
-                                )
-
-        }
-                          Row() {
-                                         Icon(imageVector = Icons.Default.Search, contentDescription = "Search icon",
-                                                     modifier = Modifier
-                                                                 .size(30.dp)
-                                                     ,
-                                                     tint = Color.Black
-
-                                         )
-                                      Spacer(modifier = Modifier.width(10.dp))
-                                      Icon(imageVector = Icons.Outlined.Notifications, contentDescription ="Notifications icon",
-                                                  modifier = Modifier
-                                                              .size(30.dp)
-                                                  ,
-                                                  tint = Color.Black
-                                                  )
-                                      Spacer(modifier = Modifier.width(10.dp))
-
-                          }
-        }
-                        Spacer(modifier = Modifier.height(20.dp))
-
-Card(modifier = Modifier
-            .fillMaxWidth()
-            .padding(10.dp),
-//            .background(color = PrimaryGreen),
-            elevation = 4.dp,
-            shape = RoundedCornerShape(10.dp)
-
-) {
-            Column(
-                        modifier = Modifier
-//                                    .fillMaxWidth()
-                                    .background(color = PrimaryGreen)
-                                    .padding(20.dp)
-
-//                                                .height(90.dp)
-
-            ) {
-                        Text(text = "Wallet balance (USD)",
-                                    color = MaterialTheme.colors.background,
-                                    textAlign = TextAlign.Start,
-                                    fontSize = 16.sp
-                        )
-                        Spacer(modifier = Modifier.height(5.dp))
-
                         Row(
-                                    verticalAlignment = Alignment.CenterVertically
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    modifier = Modifier
+                                                .fillMaxWidth()
                         ) {
-                                    Text(text ="$5,680" ,
-                                                color =  MaterialTheme.colors.background,
-                                                textAlign = TextAlign.Start,
-                                                fontSize = 16.sp
-                                    )
-                                    Spacer(modifier = Modifier.width(10.dp))
-
-                                    Icon(imageVector = Icons.Default.SwapHoriz, contentDescription = "Loop icon",
-
+                                    Column(
                                                 modifier = Modifier
-                                                            .size(30.dp)
-                                                            .clip(CircleShape)
-                                                            .background(color = MaterialTheme.colors.background)
-                                                            .padding(5.dp)
-                                                ,
-                                                tint =  PrimaryGreen,
+                                                            .weight(1f)
+                                                            .padding(horizontal = 10.dp)
 
-                                    )
-
-                        }
-                        Spacer(modifier = Modifier.height(15.dp))
-                        Button(onClick = { /*TODO*/ },
-                        shape = RoundedCornerShape(8.dp)
                                     ) {
-                                    Row(
-                                                verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.padding(vertical = 3.dp)
-                                    ) {
-                                                Text(text = "Add Funds",
-                                                            color = PrimaryGreen,
+                                                Text(
+                                                            text = "Hello Francis",
+                                                            fontWeight = FontWeight.Bold,
+                                                            color = Color.Black,
+                                                            textAlign = TextAlign.Start,
+                                                            fontSize = 20.sp
+                                                )
+                                                Text(
+                                                            text = "Welcome to jetpack",
+                                                            color = Color.Black,
                                                             textAlign = TextAlign.Start,
                                                             fontSize = 16.sp
                                                 )
-                                                Spacer(modifier = Modifier.width(4.dp))
 
+                                    }
+                                    Row() {
                                                 Icon(
-                                                            imageVector = Icons.Rounded.ArrowRightAlt,
-                                                            contentDescription = "Add funds Icon",
+                                                            imageVector = Icons.Default.Search,
+                                                            contentDescription = "Search icon",
                                                             modifier = Modifier
                                                                         .size(30.dp),
-                                                            tint = PrimaryGreen
+                                                            tint = Color.Black
 
                                                 )
+                                                Spacer(modifier = Modifier.width(10.dp))
+                                                Icon(
+                                                            imageVector = Icons.Outlined.Notifications,
+                                                            contentDescription = "Notifications icon",
+                                                            modifier = Modifier
+                                                                        .size(30.dp),
+                                                            tint = Color.Black
+                                                )
+                                                Spacer(modifier = Modifier.width(10.dp))
+
                                     }
                         }
+                        Spacer(modifier = Modifier.height(20.dp))
 
-            }
+                        Card(
+                                    modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(10.dp),
+//            .background(color = PrimaryGreen),
+                                    elevation = 4.dp,
+                                    shape = RoundedCornerShape(10.dp)
 
-}
+                        ) {
+                                    Column(
+                                                modifier = Modifier
+//                                    .fillMaxWidth()
+                                                            .background(color = PrimaryGreen)
+                                                            .padding(20.dp)
+
+//                                                .height(90.dp)
+
+                                    ) {
+                                                Text(
+                                                            text = "Wallet balance (USD)",
+                                                            color = MaterialTheme.colors.background,
+                                                            textAlign = TextAlign.Start,
+                                                            fontSize = 16.sp
+                                                )
+                                                Spacer(modifier = Modifier.height(5.dp))
+
+                                                Row(
+                                                            verticalAlignment = Alignment.CenterVertically
+                                                ) {
+                                                            Text(
+                                                                        text = "$5,680",
+                                                                        color = MaterialTheme.colors.background,
+                                                                        textAlign = TextAlign.Start,
+                                                                        fontSize = 16.sp
+                                                            )
+                                                            Spacer(modifier = Modifier.width(10.dp))
+
+                                                            Icon(
+                                                                        imageVector = Icons.Default.SwapHoriz,
+                                                                        contentDescription = "Loop icon",
+
+                                                                        modifier = Modifier
+                                                                                    .size(30.dp)
+                                                                                    .clip(CircleShape)
+                                                                                    .background(color = MaterialTheme.colors.background)
+                                                                                    .padding(5.dp),
+                                                                        tint = PrimaryGreen,
+
+                                                                        )
+
+                                                }
+                                                Spacer(modifier = Modifier.height(15.dp))
+                                                Button(
+                                                            onClick = { /*TODO*/ },
+                                                            shape = RoundedCornerShape(8.dp)
+                                                ) {
+                                                            Row(
+                                                                        verticalAlignment = Alignment.CenterVertically,
+                                                                        modifier = Modifier.padding(
+                                                                                    vertical = 3.dp
+                                                                        )
+                                                            ) {
+                                                                        Text(
+                                                                                    text = "Add Funds",
+                                                                                    color = PrimaryGreen,
+                                                                                    textAlign = TextAlign.Start,
+                                                                                    fontSize = 16.sp
+                                                                        )
+                                                                        Spacer(
+                                                                                    modifier = Modifier.width(
+                                                                                                4.dp
+                                                                                    )
+                                                                        )
+
+                                                                        Icon(
+                                                                                    imageVector = Icons.Rounded.ArrowRightAlt,
+                                                                                    contentDescription = "Add funds Icon",
+                                                                                    modifier = Modifier
+                                                                                                .size(30.dp),
+                                                                                    tint = PrimaryGreen
+
+                                                                        )
+                                                            }
+                                                }
+
+                                    }
+
+                        }
 
                         Spacer(modifier = Modifier.height(5.dp))
                         Row(
@@ -182,51 +202,72 @@ Card(modifier = Modifier
                                                 .fillMaxWidth()
                                                 .padding(horizontal = 10.dp)
                         ) {
-                                    Text(text = "Watchlist", color = Color.Black,
+                                    Text(
+                                                text = "Watchlist", color = Color.Black,
                                                 fontWeight = FontWeight.Bold,
-                                                )
+                                    )
                                     TextButton(onClick = { /*TODO*/ }) {
                                                 Text(text = "See All", color = PrimaryGreen)
                                     }
                         }
-                        
-            LazyRow(
 
-            ){
-items(homeItemsList){
-            item ->
-            Card(
-                      modifier = Modifier
-                                  .padding(10.dp)
-                                  .width(175.dp)
-                                  .background(color = IconBg)
-                                  .padding(10.dp)
+                        LazyRow(
 
-            ){
-                        Column {
-                                    Text(text = item.sName,
-                                    fontWeight = FontWeight.Bold,
-                                                fontSize = 19.sp,
-                                                color = Color.Black
+                        ) {
+                                    items(homeItemsList) { item ->
+                                                Card(
+                                                            modifier = Modifier
+                                                                        .padding(10.dp)
+                                                                        .width(175.dp),
+                                                            shape = RoundedCornerShape(8.dp)
 
-                                                )
-                                    Text(text = item.lName,
-                                                fontWeight = FontWeight.Bold,
-                                                fontSize = 19.sp,
-                                                color = Color.Black
+                                                ) {
+                                                            Column(
+                                                                        modifier = Modifier
+                                                                                    .background(color = IconBg)
+                                                                                    .padding(10.dp)
+                                                            ) {
 
-                                    )
+                                                                        Row() {
+                                                                                    Row() {
+                                                                                                Image(
+                                                                                                            painter = painterResource(
+                                                                                                                        id = item.image
+                                                                                                            ),
+                                                                                                            contentDescription = "Image icon"
+                                                                                                )
+                                                                                    }
+                                                                                    Row(
+
+                                                                                    ) {
+                                                                                                Text(
+                                                                                                            text = item.sName,
+                                                                                                            fontWeight = FontWeight.Bold,
+                                                                                                            fontSize = 19.sp,
+                                                                                                            color = Color.Black
+
+                                                                                                )
+
+                                                                                                Text(
+                                                                                                            text = item.lName,
+                                                                                                            fontSize = 14.sp,
+                                                                                                            color = Color.Black
+
+                                                                                                )
+                                                                                    }
+                                                                        }
+
+                                                            }
+                                                }
+                                    }
                         }
             }
-}
-            }
-            }
-
 
 
 }
+
 @Composable
-fun MarketScreen(){
+fun MarketScreen() {
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
@@ -242,8 +283,9 @@ fun MarketScreen(){
                         )
             }
 }
+
 @Composable
-fun WalletScreen(){
+fun WalletScreen() {
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
@@ -261,7 +303,7 @@ fun WalletScreen(){
 }
 
 @Composable
-fun ProfileScreen(){
+fun ProfileScreen() {
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
@@ -279,7 +321,7 @@ fun ProfileScreen(){
 }
 
 @Composable
-fun HistoryScreen(){
+fun HistoryScreen() {
             Column(
                         modifier = Modifier
                                     .fillMaxSize()
@@ -297,5 +339,4 @@ fun HistoryScreen(){
 }
 
 
-
-data class homeItems(val image:Int, val sName:String , val lName:String)
+data class homeItems(val image: Int, val sName: String, val lName: String)
