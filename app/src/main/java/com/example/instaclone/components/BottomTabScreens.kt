@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import com.example.instaclone.R
 import com.example.instaclone.ui.theme.IconBg
 import com.example.instaclone.ui.theme.PrimaryGreen
+import com.example.instaclone.ui.theme.WhiteBg
 
 val homeItemsList = listOf<homeItems>(
             homeItems(R.drawable.sofi, "SOFI", "SoFi"),
@@ -218,7 +219,7 @@ fun HomeScreen() {
                                                 Card(
                                                             modifier = Modifier
                                                                         .padding(10.dp)
-                                                                        .width(175.dp),
+                                                                        .width(165.dp),
                                                             shape = RoundedCornerShape(8.dp)
 
                                                 ) {
@@ -228,30 +229,67 @@ fun HomeScreen() {
                                                                                     .padding(10.dp)
                                                             ) {
 
-                                                                        Row() {
-                                                                                    Row() {
-                                                                                                Image(
-                                                                                                            painter = painterResource(
-                                                                                                                        id = item.image
-                                                                                                            ),
-                                                                                                            contentDescription = "Image icon"
+                                                                        Row(
+                                                                                    verticalAlignment = Alignment.CenterVertically,
+                                                                                    horizontalArrangement = Arrangement.SpaceBetween
+                                                                        ) {
+                                                                           Row() {
+                                                                                       Row() {
+                                                                                                   Image(
+                                                                                                               painter = painterResource(
+                                                                                                                           id = item.image,
+                                                                                                               ),
+                                                                                                               contentDescription = "Image icon",
+                                                                                                               modifier = Modifier
+                                                                                                                           .width(40.dp)
+                                                                                                                           .height(40.dp)
+                                                                                                                           .clip(CircleShape)
+
+                                                                                                   )
+                                                                                       }
+                                                                                       Spacer(
+                                                                                                   modifier = Modifier.width(
+                                                                                                               5.dp
+                                                                                                   )
+                                                                                       )
+                                                                                       Column(
+//                                                                                                   modifier = Modifier.
+//                                                                                                           weight(1f)
+
+                                                                                       ) {
+                                                                                                   Text(
+                                                                                                               text = item.sName,
+                                                                                                               fontWeight = FontWeight.Bold,
+                                                                                                               fontSize = 15.sp,
+                                                                                                               color = Color.Black
+
+                                                                                                   )
+
+                                                                                                   Text(
+                                                                                                               text = item.lName,
+                                                                                                               fontSize = 12.sp,
+                                                                                                               color = Color.Black
+
+                                                                                                   )
+                                                                                       }
+                                                                           }
+                                                                                    Spacer(
+                                                                                                modifier = Modifier.width(
+                                                                                                            5.dp
                                                                                                 )
-                                                                                    }
+                                                                                    )
                                                                                     Row(
-
+                                                                                                modifier = Modifier.
+                                                                                                        weight(1f)
+//                                                                                                            .background(color= WhiteBg)
+                                                                                                ,
+                                                                                                horizontalArrangement = Arrangement.End,
+//                                                                                                        width(40.dp)
                                                                                     ) {
-                                                                                                Text(
-                                                                                                            text = item.sName,
-                                                                                                            fontWeight = FontWeight.Bold,
-                                                                                                            fontSize = 19.sp,
-                                                                                                            color = Color.Black
-
-                                                                                                )
-
-                                                                                                Text(
-                                                                                                            text = item.lName,
-                                                                                                            fontSize = 14.sp,
-                                                                                                            color = Color.Black
+                                                                                                Icon(
+                                                                                                            imageVector = Icons.Default.ArrowDropUp,
+                                                                                                            contentDescription = "Upward icon stock market",
+                                                                                                            tint = PrimaryGreen
 
                                                                                                 )
                                                                                     }
